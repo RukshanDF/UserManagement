@@ -1,0 +1,34 @@
+.App {
+  text-align: center;
+}
+
+.md-1 {
+  margin-bottom: 1rem;
+}
+
+.font_head {
+  font-size: 1.5rem;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  border: 1px silver solid;
+  border-radius: 8px;
+}
+
+.pd-5 {
+  padding: 5px;
+}
+
+.text_button {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.lh {
+  line-height: 30px;
+}
+.pl {
+  padding-left: 30px;
+}
