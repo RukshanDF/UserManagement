@@ -18,15 +18,6 @@ describe("users creation", () => {
   }, 30000);
 });
 
-describe("users delete", () => {
-  it("should delete the user", () => {
-    return request(app)
-      .delete("/users/deleteByMail")
-      .send(userInput)
-      .expect(200);
-  }, 30000);
-});
-
 describe("users validations", () => {
   it("should return users", () => {
     return request(app)
@@ -58,12 +49,21 @@ describe("users validations", () => {
       .expect(200)
       .expect((res) =>
         expect(
-          res.body[1].status === "Active" ||
-            res.body[1].status === "Non-Active" ||
-            res.body[1].status === "Lead"
+          res.body[0].status === "Active" ||
+            res.body[0].status === "Non-Active" ||
+            res.body[0].status === "Lead"
         ).toBe(true)
       );
   });
+});
+
+describe("users delete", () => {
+  it("should delete the user", () => {
+    return request(app)
+      .delete("/users/deleteByMail")
+      .send(userInput)
+      .expect(200);
+  }, 30000);
 });
 
 afterAll(() => {
