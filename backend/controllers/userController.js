@@ -24,7 +24,7 @@ const createNewUser = async (req, res) => {
       name: name,
       email: email,
       status: status,
-      date: new Date("2023-03-12T23:39:42.439Z"),
+      date: new Date(),
     });
 
     res.status(201).json({ success: `New User ${email} created!` });
