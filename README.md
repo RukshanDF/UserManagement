@@ -24,6 +24,11 @@ node server
 This command will start the server and make it available at http://localhost:8080 by default.
 If the server is running correctly, you should see a message in the terminal indicating that the server is up and running.
 
+## Step 4: Run Tests
+
+Run backend tests by running the following command:
+npm test
+
 ## Run Front End
 
 This guide will show you how to run the finished React application on your local machine for testing purposes.

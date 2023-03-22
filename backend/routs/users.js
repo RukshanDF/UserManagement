@@ -1,20 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const gatewayController = require("../controllers/userController");
+const userController = require("../controllers/userController");
 
 router
   .route("/")
-  .get(gatewayController.getAllUser)
-  .post(gatewayController.createNewUser)
-  .put(gatewayController.updateUser)
-  .delete(gatewayController.deleteUser);
+  .get(userController.getAllUser)
+  .post(userController.createNewUser)
+  .put(userController.updateUser)
+  .delete(userController.deleteUser);
 
-router.route("/:id").get(gatewayController.getUser);
-
+router.route("/:id").get(userController.getUser);
+router.route("/deleteByMail").delete(userController.deleteUserByMail);
 router
   .route("/update_opportunities")
-  .post(gatewayController.add_opportunity)
-  .put(gatewayController.update_opportunity)
-  .delete(gatewayController.delete_opportunity);
+  .post(userController.add_opportunity)
+  .put(userController.update_opportunity)
+  .delete(userController.delete_opportunity);
 
 module.exports = router;

@@ -52,7 +52,7 @@ const updateUser = async (req, res) => {
     );
 
     if (result) {
-      res.status(201).json({ success: `User ${email} updated!` });
+      res.status(200).json({ success: `User ${email} updated!` });
     } else {
       return res.status(404).json({ message: "User not found" });
     }
@@ -71,7 +71,26 @@ const deleteUser = async (req, res) => {
       _id: ObjectId(_id),
     });
     if (result) {
-      res.status(201).json({ success: `User ${email} deleted!` });
+      res.status(200).json({ success: `User ${email} deleted!` });
+    } else {
+      return res.status(404).json({ message: "User not found" });
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+const deleteUserByMail = async (req, res) => {
+  const { email } = req.body;
+  if (!email) {
+    return res.status(400).json({ message: "email is missing" });
+  }
+  try {
+    const result = await Users.findOneAndDelete({
+      email: email,
+    });
+    if (result) {
+      res.status(200).json({ success: `User ${email} deleted!` });
     } else {
       return res.status(404).json({ message: "User not found" });
     }
@@ -91,7 +110,7 @@ const getUser = async (req, res) => {
       _id: ObjectId(id),
     });
     if (result) {
-      res.status(201).json(result);
+      res.status(200).json(result);
     } else {
       return res.status(404).json({ message: "User not found" });
     }
@@ -156,7 +175,7 @@ const delete_opportunity = async (req, res) => {
     );
 
     if (result) {
-      res.status(201).json({ success: `Opportunity removed from User!` });
+      res.status(200).json({ success: `Opportunity removed from User!` });
     } else {
       return res.status(404).json({ message: "User not found" });
     }
@@ -192,7 +211,7 @@ const update_opportunity = async (req, res) => {
 
     if (result) {
       res
-        .status(201)
+        .status(200)
         .json({ success: `Opportunity status updates to ${status}!` });
     } else {
       return res.status(404).json({ message: "User not found" });
@@ -208,6 +227,7 @@ module.exports = {
   updateUser,
   deleteUser,
   getUser,
+  deleteUserByMail,
   add_opportunity,
   update_opportunity,
   delete_opportunity,
